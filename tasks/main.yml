@@ -1,0 +1,4 @@
+---
+
+- name: install php7.0-common
+  apt: pkg=php7.0-common state=present
