@@ -26,6 +26,9 @@ php7_ini_directives_apache: {}
 php7_ini_directives_cgi: {}
 php7_ini_directives_fpm: {}
 
+php7_extensions: []
+php7_versioned_extensions: []
+
 php7_fpm_pid: "/run/php/php{{ php7_version }}-fpm.pid"
 php7_fpm_error_log: "/var/log/php{{ php7_version }}-fpm.log"
 php7_fpm_log_level: warning

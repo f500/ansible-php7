@@ -105,3 +105,19 @@
     name: "php{{ php7_version }}-fpm"
     enabled: yes
   when: php7_enable_fpm
+
+- name: Install PHP extensions
+  apt:
+    name: "php-{{ item }}"
+  with_items: "{{ php7_extensions }}"
+  notify:
+    - Restart Apache
+    - Restart PHP FPM
+
+- name: Install versioned PHP extensions
+  apt:
+    name: "php{{ php7_version }}-{{ item }}"
+  with_items: "{{ php7_versioned_extensions }}"
+  notify:
+    - Restart Apache
+    - Restart PHP FPM

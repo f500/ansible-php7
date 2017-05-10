@@ -33,6 +33,8 @@ The original `php.ini` files are _never_ touched by this role.
 Instead a `99-customization.ini` file is placed in the appropriate `conf.d` directories.
 These customization files will be filled with the [INI directives](https://secure.php.net/manual/en/ini.list.php) you specify with the following role variables.
 
+### INI
+
 Global INI directives, which configure all of CLI, Apache2, CGI and FPM:
 
     php7_ini_directives_global: {}
@@ -58,6 +60,24 @@ The result is the same as if configured in the following way:
       session.sid_bits_per_character: 4   # 7.1 and up
       session.sid_length: 64              # 7.1 and up
       session.use_strict_mode: yes
+
+### Extensions
+
+Install additional PHP extensions:
+
+    php7_extensions: []
+    php7_versioned_extensions: []
+
+For example, to install the packages `php-apcu`, `php7.X-curl` and `php7.X-mysql`:
+
+    php7_extensions:
+      - apcu
+
+    php7_versioned_extensions:
+      - curl
+      - mysql
+
+Extension specific INI directives can be specified the same way any other, see the **INI** section above.
 
 ### FPM
 
