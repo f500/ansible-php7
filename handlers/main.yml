@@ -1,4 +1,13 @@
 ---
 
-- name: restart php-fpm
-  service: name=php7.0-fpm state=restarted
+- name: Restart Apache
+  service:
+    name: apache2
+    state: restarted
+  when: php7_enable_apache
+
+- name: Restart PHP FPM
+  service:
+    name: "php{{ php7_version }}-fpm"
+    state: restarted
+  when: php7_enable_fpm
