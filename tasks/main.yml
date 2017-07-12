@@ -19,7 +19,7 @@
 
 - name: Add the deb.sury.org repository
   apt_repository:
-    repo: deb https://packages.sury.org/php/ jessie main
+    repo: "deb https://packages.sury.org/php/ {{ ansible_distribution_release }} main"
     update_cache: yes
 
 - name: Install PHP CLI
