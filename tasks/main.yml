@@ -86,6 +86,12 @@
   notify: Restart PHP FPM
   when: php7_enable_fpm
 
+- name: Ensure "chdir" in the standard pool exists
+  file:
+    path: "{{ php7_fpm_pool_chdir }}"
+    state: directory
+  when: php7_enable_fpm and php7_fpm_pool_enabled
+
 - name: Configure the standard pool for FPM
   template:
     src: php-fpm-pool.conf.j2
